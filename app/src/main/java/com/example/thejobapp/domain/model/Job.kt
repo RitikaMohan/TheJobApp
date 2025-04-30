@@ -1,7 +1,7 @@
 package com.example.thejobapp.domain.model
 
 data class Job(
-    val id: Int,
+    val id: String,
     val title: String,
     val primary_details: PrimaryDetails?
 )

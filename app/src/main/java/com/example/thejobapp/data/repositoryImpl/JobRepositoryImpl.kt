@@ -28,8 +28,10 @@ class JobRepositoryImpl(private val api: JobApiService) : JobRepository {
         return try {
             val response = api.getJobDetails(jobId)
             Log.d("JobRepository", "Calling API: /common/jobs/$jobId")
+            Log.d("JobRepository", "Raw JSON Response: $response")
             Result.success(response.toJobDetails())
         } catch (e: Exception) {
+            Log.e("JobRepository", "API Error: ${e.message}", e)
             Result.failure(e)
         }
     }

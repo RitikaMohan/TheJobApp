@@ -25,6 +25,7 @@ class JobDetailsViewModel(
         private set
 
     init {
+        Log.d("JobDetailsViewModel", "ViewModel initialized with jobId=$jobId")
         load()
     }
 
