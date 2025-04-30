@@ -11,6 +11,7 @@ import retrofit2.http.Query
 interface JobApiService {
     @GET("common/jobs")
     suspend fun getJobs(@Query("page") page: Int): JobResponse
-    @GET("jobs/{id}")
-    suspend fun getJobDetails(@Path("id") jobId: String): Response<JobDetails>
+
+    @GET("common/jobs/{id}")
+    suspend fun getJobDetails(@Path("id") id: String): JobDetailsDto
 }

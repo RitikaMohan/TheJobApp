@@ -12,7 +12,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.thejobapp.presentation.bookmark.BookmarkScreen
 import com.example.thejobapp.presentation.home.HomeScreen
-//import com.example.thejobapp.presentation.jobdetails.JobDetailsScreen
+import com.example.thejobapp.presentation.jobDetails.JobDetailsScreen
+
 
 @Composable
 fun NavigationGraph(
@@ -27,15 +28,17 @@ fun NavigationGraph(
         composable(Screen.Home.route) {
             HomeScreen(navController = navController)
         }
+
         composable(Screen.Bookmarks.route) {
             BookmarkScreen()
         }
-//        composable(
-//            route = "job_details/{jobId}",
-//            arguments = listOf(navArgument("jobId") { type = NavType.StringType })
-//        ) { backStackEntry ->
-//            val jobId = backStackEntry.arguments?.getString("jobId") ?: ""
-//            JobDetailsScreen(jobId = jobId)
-//        }
+
+        composable(
+            route = Screen.JobDetails.route,
+            arguments = listOf(navArgument("jobId") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val jobId = backStackEntry.arguments?.getString("jobId") ?: return@composable
+            JobDetailsScreen(jobId = jobId)
+        }
     }
 }
